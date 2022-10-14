@@ -1,0 +1,29 @@
+.login-button {
+  margin-left: 130px;
+  background-color: rgb(98, 55, 44);
+  width: 35%;
+}
+.login-heading {
+  margin-left: 160px;
+}
+.login-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-align: left;
+  width: 500px;
+  margin-top: 50px;
+  box-shadow: -2px 5px 12px -4px rgba(51,17,3,0.52);
+
+}
+.login-form {
+  padding-top: 1em;
+}
+.image{
+  margin-left: 70%;
+}
+.page-heading{
+  margin-left: 36%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}

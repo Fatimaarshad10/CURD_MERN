@@ -1,0 +1,31 @@
+.register-button {
+  margin-left: 150px;
+  background-color: rgb(98, 55, 44);
+  width: 35%;
+  text-align: center;
+}
+.reg-heading {
+  text-align: center;
+}
+.reg-container {
+  border-radius: 1em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding: 1em;
+  text-align: left;
+  width: 500px;
+  box-shadow: -2px 5px 12px -4px rgba(51,17,3,0.52);
+}
+
+.reg-form {
+  padding-top: 15px;
+}
+
+label {
+  font-weight: 600;
+}
+.error{
+  color: red;
+}
