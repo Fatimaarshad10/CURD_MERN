@@ -16,59 +16,54 @@ function AddProduct() {
   const [value1, setValue] = useState([]);
   const [modalRight, setModalRight] = useState(false);
   const [toggle, setToggle] = useState(false);
-  
 
-  //api call 
   const handleSubmit = async (e) => {
     setToggle(!toggle);
-       setModalRight(true);
+    setModalRight(true);
     e.preventDefault();
-    const data = new FormData()
-    data.append('image',value1)
-    data.append('title', title)     
-    data.append('description',description)
-    data.append('price',price)    
+    const data = new FormData();
+    data.append("image", value1);
+    data.append("title", title);
+    data.append("description", description);
+    data.append("price", price);
     const response = await fetch(`/products`, {
       method: "POST",
-      body: (data),
-
+      body: data,
     });
     const value = await response.json();
-    
-    if(!response.ok){
-      console.log('error')
-      console.log(value)
-    }
- else{
-      setTitle("")
-      setDescription("")
-      setPrice("")
-      console.log("New Product added:", value);
-    }
-    setModalRight(false)
 
+    if (!response.ok) {
+      console.log("error");
+      console.log(value);
+    } else {
+      setTitle("");
+      setDescription("");
+      setPrice("");
+    }
+    setModalRight(false);
   };
 
-  
-  const submitHandler =(e)=>{
-    setValue(e.target.files[0])
-  }
+  const submitHandler = (e) => {
+    setValue(e.target.files[0]);
+  };
   return (
     <>
       <Button
-       onClick={() => setModalRight(true)}
+        onClick={() => setModalRight(true)}
         style={{
           marginTop: "12px",
           marginLeft: "96%",
-          boxShadow: '-2px 5px 12px -4px rgba(51,17,3,0.52)'
+          boxShadow: "-2px 5px 12px -4px rgba(51,17,3,0.52)",
         }}
       >
         <i class="fa-solid fa-plus"></i>
       </Button>
 
-      <Modal   isOpen={modalRight}
-            toggle={() => setModalRight(!modalRight)}
-            wrapClassName="modal-right">
+      <Modal
+        isOpen={modalRight}
+        toggle={() => setModalRight(!modalRight)}
+        wrapClassName="modal-right"
+      >
         <Form className="card-form" onSubmit={handleSubmit}>
           <h2>ADD PRODUCT</h2>
           <FormGroup>
@@ -78,15 +73,14 @@ function AddProduct() {
               onChange={(e) => setTitle(e.target.value)}
               value={title}
             />
-      
-      <FormGroup>
-            
-            <input
-              type="file"
-              onChange={submitHandler}
-             style={{marginTop:'15px'}}
-            />
-          </FormGroup>
+
+            <FormGroup>
+              <input
+                type="file"
+                onChange={submitHandler}
+                style={{ marginTop: "15px" }}
+              />
+            </FormGroup>
           </FormGroup>
           <FormGroup>
             <Label>Price</Label>
@@ -104,13 +98,10 @@ function AddProduct() {
               value={description}
             />
           </FormGroup>
-          
+
           <ModalFooter>
-            <Button color="success"  >
-              Submit
-             
-            </Button>{" "}
-            <Button color="secondary"onClick={() => setModalRight(false)}>
+            <Button color="success">Submit</Button>{" "}
+            <Button color="secondary" onClick={() => setModalRight(false)}>
               Cancel
             </Button>
           </ModalFooter>

@@ -8,7 +8,6 @@ const Users = require("./routes/UserRouters");
 const cookie = require('cookie-parser')
 //Middleware
 Artistic.use('/profile', express.static('./images'));
-
 Artistic.use(cors());
 Artistic.use(express.json());
 Artistic.use(cookie());
