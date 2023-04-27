@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Form, Row, FormGroup, Label, Input, Button } from "reactstrap";
-import "../css/register.css";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -47,10 +46,10 @@ function Register() {
       {user ? (
         <></>
       ) : (
-        <div className="reg-container">
-          <h1 className="reg-heading">Sign Up</h1>
+        <div className="login-container">
+          <h1 className="login-heading">Sign Up</h1>
 
-          <Form className="reg-form">
+          <Form className="login-form">
             <Row>
               <FormGroup>
                 <Label className="reg-label">Name</Label>
@@ -101,7 +100,9 @@ function Register() {
                 </Input>
               </FormGroup>
             </Row>
-            <Button className="register-button" onClick={() => RegisterForm()}>
+            <Button className="login-button" onClick={() => RegisterForm()}
+            
+            >
               Sign Up
             </Button>
             <ToastContainer autoClose={10} />

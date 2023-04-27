@@ -8,14 +8,12 @@ import Products from "./components/products";
 import ContactUs from "./components/ContactUs";
 import Navbar from "./components/navbar";
 import ProductDetail from './components/productDetail'
-import New from "./components/new";
 function App() { 
  
   return (
     <>
    
       <Navbar />
-      <New/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

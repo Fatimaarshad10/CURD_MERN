@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import AddProduct from "./AddProduct";
-import "../css/artistic.css";
+
 import { ColorRing } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 import { Navigate, useParams } from "react-router-dom";
@@ -169,7 +168,7 @@ function Products(args) {
             toggle={() => setModalRight(!modalRight)}
             wrapClassName="modal-right"
           >
-            <div className="App2">
+            <div className="p-4">
               <h2 className="text-center">UPDATE PRODUCT</h2>
               <div>
                 <Label className="mt-4">Title</Label>
@@ -187,8 +186,8 @@ function Products(args) {
                   onChange={handleInputs}
                 />
 
-                <Input 
-                className="mt-4"
+                <Input
+                  className="mt-4"
                   type="file"
                   files={data.image}
                   defaultValue={data.image}
@@ -197,7 +196,7 @@ function Products(args) {
                   onChange={submitHandler}
                   style={{ marginTop: "15px" }}
                 />
-                
+
                 <Label className="mt-4">Description</Label>
                 <Input
                   name="description"
@@ -209,13 +208,15 @@ function Products(args) {
 
               <ModalFooter className="footer">
                 <Button
-                  className="input-btn"
                   color="success"
                   onClick={() => UpdateProducts(data._id)}
                 >
                   Update
                 </Button>
-                <Button color="secondary" onClick={() => setModalRight(false)}>
+                <Button   style={{
+                                    border:'none',
+                                    backgroundColor:'#5161CE',
+                                  }} onClick={() => setModalRight(false)}>
                   Cancel
                 </Button>
               </ModalFooter>
@@ -240,18 +241,18 @@ function Products(args) {
               onClick={toggle1}
               style={{
                 marginTop: "12px",
-                marginLeft: "96%",
-                boxShadow: "-2px 5px 12px -4px rgba(51,17,3,0.52)",
+                marginLeft: "90%",
+                backgroundColor:'#5161CE',
               }}
             >
-              <i class="fa-solid fa-plus"></i>
+             Add 
             </Button>
           ) : (
             ""
           )}
 
           <Modal isOpen={modal} toggle={toggle1} {...args}>
-            <Form className="card-form" onSubmit={handleSubmit}>
+            <Form className="card-form p-4" onSubmit={handleSubmit}>
               <h2 className="text-center">ADD PRODUCT</h2>
               <FormGroup>
                 <Label className="mt-4">Title</Label>
@@ -263,7 +264,7 @@ function Products(args) {
 
                 <FormGroup>
                   <input
-                  className="mt-4"
+                    className="mt-4"
                     type="file"
                     onChange={Handler}
                     style={{ marginTop: "15px" }}
@@ -271,7 +272,7 @@ function Products(args) {
                 </FormGroup>
               </FormGroup>
               <FormGroup>
-                <Label className="mt-2" >Price</Label>
+                <Label className="mt-2">Price</Label>
                 <Input
                   type="number"
                   onChange={(e) => setPrice(e.target.value)}
@@ -289,7 +290,10 @@ function Products(args) {
 
               <ModalFooter>
                 <Button color="success">Submit</Button>{" "}
-                <Button color="secondary" onClick={toggle1}>
+                <Button   style={{
+                                    border:'none',
+                                    backgroundColor:'#5161CE',
+                                  }} onClick={toggle1}>
                   Cancel
                 </Button>
               </ModalFooter>
@@ -297,87 +301,69 @@ function Products(args) {
           </Modal>
 
           {loader ? (
-            <div>
+            <>
               {products.map((data) => (
-                <div class="col " key={data._id} className="product-card ">
-                  <div class="row" xs={1} md={4} className="g-4 ">
-                    <Card
-                      style={{
-                        width: "22rem",
-                        height: "80vh",
-                        whiteSpace: "pre-wrap",
-                      }}
-                      class="c1"
-                    >
-                      <div class="view rgba-white-slight waves-light ">
-                        <div>
+                <>
+                  <div class="container mt-3">
+                    <div class="card float-right">
+                      <div class="row">
+                        <div class="col-sm-5">
                           <img
+                            class="d-block w-100"
                             src={data.image}
                             alt="image"
-                            width="100%"
-                            height="270px"
                           />
                         </div>
-                        <CardBody>
-                          <div
-                            style={{
-                              height: "200px",
-                              width: "100%",
-                              wordBreak: "break-word",
-                              textAlign:"center"
-                            }}
-                          >
-                            <div style={{ overflow: "hidden", height: "30px" , textTransform:'uppercase'}}>
-                              <CardTitle>
-                                <h4>{data.title}</h4>
-                              </CardTitle>
-                            </div>
-                            <div style={{ overflow: "hidden", height: "50px" }}>
-                              <CardText> {data.description} 
-
-                             </CardText>
+                        <div class="col-sm-7">
+                          <div class="card-block">
+                            <h3>{data.title}.</h3>
+                            <p style={{ overflow: "hidden", height: "20px" }}>
+                              {data.description}{" "}
+                            </p>
                             
-                            
-                            </div>
-                            <CardText>
-                             <Link
+                            <Link
                               className="navLink-product"
                               to={`/products/` + data._id}
-                            >  Read more...
-                            </Link> 
-                             </CardText>
+                            >
+                              Read more...
+                            </Link>
+
+                            <br />
                             {admit ? (
-                            <>
-                              <Button
-                                className="product-button"
-
-                                onClick={() => deleteProduct(data._id)}
-                              >
-                                Delete
-                              </Button>
-
-                              <Button
-                                className="product-button"
-                                onClick={() => checkProducts(data._id)}
-                              >
-                                Edit
-                              </Button>
-                            </>
-                          ) : (
-                            <></>
-                          )}
-                           
-                            
+                              <>
+                              
+                                <a
+                                  class="btn btn-primary btn-sm float-right mt-4"
+                                  style={{
+                                    border:'none',
+                                    backgroundColor:'#5161CE',
+                                  }}
+                                  onClick={() => checkProducts(data._id)}
+                                >
+                                  Edit
+                                </a>
+                                <a
+                                  class="btn btn-primary btn-sm float-right mt-4"
+                                  style={{
+               border:'none',
+                                    backgroundColor:'#5161CE',
+                                  }}
+                                  onClick={() => deleteProduct(data._id)}
+                                >
+                                  Delete
+                                </a>
+                              </>
+                            ) : (
+                              <></>
+                            )}
                           </div>
-                          
-                        </CardBody>
+                        </div>
                       </div>
-                    </Card>
-                    <ToastContainer autoClose={10} />
+                    </div>
                   </div>
-                </div>
+                </>
               ))}
-            </div>
+            </>
           ) : (
             <div className="blocks">
               <ColorRing
@@ -387,7 +373,7 @@ function Products(args) {
                 ariaLabel="blocks-loading"
                 wrapperStyle={{}}
                 wrapperClass="blocks-wrapper"
-                colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+                colors={["#5F73DF"]}
               />
             </div>
           )}
@@ -395,6 +381,7 @@ function Products(args) {
       ) : (
         <>
           <Navigate to="/login" replace />
+          <ToastContainer autoClose={10} />
         </>
       )}
     </>

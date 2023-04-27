@@ -47,8 +47,8 @@ useEffect(() => {
       </div>
     
     </div>
-    <div class = "product-content">
-      <h2 class = "product-title">{detail.title}</h2>
+    <div class = "product-content mt-5">
+      <h2 class = "product-title mt-5">{detail.title}</h2>
       <div class = "product-rating">
         <i class = "fas fa-star"></i>
         <i class = "fas fa-star"></i>

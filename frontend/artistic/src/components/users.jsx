@@ -5,7 +5,6 @@ import { ColorRing } from "react-loader-spinner";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Navigate } from "react-router-dom";
-import "../css/user.css";
 function Users() {
   // For login
   const user1 = JSON.parse(localStorage.getItem("user"));
@@ -14,7 +13,7 @@ function Users() {
   if (admin === "true") {
     var admit = admin;
   } else {
-    var admit = "";
+    admit = "false";
   }
   const [user, setUser] = useState([]);
   const [data, setData] = useState({
@@ -97,7 +96,6 @@ function Users() {
       UserLoader();
       toast("User is delete ");
     }
-    // window.location.reload(true);
   };
 
   let name, value;
@@ -116,7 +114,7 @@ function Users() {
             toggle={() => setModalRight(!modalRight)}
             wrapClassName="modal-right"
           >
-            <div className="App2">
+            <div className="p-4">
               <h2>User DETAILS</h2>
               <div>
                 <Label>Name</Label>
@@ -137,13 +135,18 @@ function Users() {
               </div>
               <ModalFooter className="footer">
                 <Button
-                  className="input-btn"
-                  color="success"
+                   style={{
+                    border:'none',
+                    backgroundColor:'#5161CE',
+                  }}
                   onClick={() => putButton(data._id)}
                 >
                   Update
                 </Button>
-                <Button color="secondary" onClick={() => setModalRight(false)}>
+                <Button  style={{
+                                    border:'none',
+                                    backgroundColor:'#5161CE',
+                                  }} onClick={() => setModalRight(false)}>
                   Cancel
                 </Button>
               </ModalFooter>
@@ -157,10 +160,8 @@ function Users() {
         <div>
           {user1 ? (
             <div
-              className="container"
-              style={{
-                boxShadow: "-2px 5px 12px -4px rgba(51,17,3,0.52)",
-              }}
+              className="container  mt-5"
+            
             >
               <Table striped>
                 <thead>
@@ -182,15 +183,21 @@ function Users() {
                           <>
                             <td>
                               <Button
-                                className="user-button"
                                 onClick={() => editUser(data._id)}
+                                style={{
+                                  border:'none',
+                                                       backgroundColor:'#5161CE',
+                                                     }}
                               >
                                 <i className="fa-solid fa-pen-to-square"></i>
                               </Button>
                             </td>
                             <td>
                               <Button
-                                className="user-button2"
+                               style={{
+                                border:'none',
+                                                     backgroundColor:'#5161CE',
+                                                   }}
                                 onClick={() => deleteUser(data._id)}
                               >
                                 <i className="fa-solid fa-trash"></i>
@@ -222,7 +229,7 @@ function Users() {
             ariaLabel="blocks-loading"
             wrapperStyle={{}}
             wrapperClass="blocks-wrapper"
-            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+            colors={["#5F73DF"]}
           />
         </div>
       )}

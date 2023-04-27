@@ -1,6 +1,12 @@
+body{
+  overflow-x: hidden;
+}
 .login-button {
   margin-left: 130px;
   width: 35%;
+border: none;
+background-color: #5161CE;
+                     
 }
 .login-heading {
   margin-left: 160px;

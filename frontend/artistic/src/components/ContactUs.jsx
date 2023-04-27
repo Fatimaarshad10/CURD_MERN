@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Row, FormGroup, Label, Input, Button } from "reactstrap";
-import "../css/contact.css";
 import emailjs from "@emailjs/browser";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,9 +7,7 @@ import { Navigate } from "react-router-dom";
 function ContactUs() {
   const [contact, setContact] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
-
   const form = useRef();
-
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
@@ -50,9 +47,9 @@ function ContactUs() {
   return (
     <>
       {user ? (
-        <div className="contact-container">
-          <h1 className="contact-heading">Contact Us</h1>
-          <form className="contact-form" onSubmit={sendEmail} ref={form}>
+        <div className="login-container">
+          <h1 className="login-heading">Contact Us</h1>
+          <form className="login-form" onSubmit={sendEmail} ref={form}>
             <Row>
               <FormGroup>
                 <Label>Email</Label>
@@ -70,8 +67,12 @@ function ContactUs() {
               </FormGroup>
             </Row>
             <Button
-              color="secondary"
-              style={{ marginLeft: "145px", width: "40%" }}
+                 style={{
+                  border:'none',
+                                       backgroundColor:'#5161CE',
+                                       marginLeft: "145px", width: "40%"
+                                     }}
+             
             >
               Submit
             </Button>
